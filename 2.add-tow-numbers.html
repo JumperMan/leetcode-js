@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>add tow numbers</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>add tow numbers</h2>
+
+  </div>
+  <div id='result'></div>
+</body>
+<script>
+  // Definition for singly-linked list.
+  function ListNode(val, next) {
+    this.val = (val === undefined ? 0 : val)
+    this.next = (next === undefined ? null : next)
+  }
+
+  /**
+   * @param {ListNode} l1
+   * @param {ListNode} l2
+   * @return {ListNode}
+   */
+
+   var addTwoNumbers = function(l1, l2) {
+    const dummyNode = new ListNode();
+    let cur = dummyNode;
+    let extra = 0;
+    while (l1 || l2) {
+        let sum = extra;
+        if (l1) {
+            sum += l1.val;
+            l1 = l1.next;
+        }
+        if (l2) {
+            sum += l2.val;
+            l2 = l2.next;
+        }
+        extra = Math.floor(sum / 10);
+        cur.next = new ListNode(sum % 10);
+        cur = cur.next;
+    }
+    if (extra) cur.next = new ListNode(extra);
+    return dummyNode.next;
+};
+
+  let l1_1 = new ListNode(2)
+  let l1_2 = new ListNode(4)
+  let l1_3 = new ListNode(3)
+  l1_1.next = l1_2
+  l1_2.next = l1_3
+  let input1 = l1_1
+
+  let l2_1 = new ListNode(5)
+  let l2_2 = new ListNode(6)
+
+  l2_1.next = l2_2
+
+  let input2 = l2_1
+
+
+  let result = addTwoNumbers(input1, input2)
+  console.log(result)
+  document.querySelector('#result').innerHTML = typeof result === 'object' ? result :result
+
+</script>
+<style>
+  #leetcode-box {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: baseline;
+  }
+
+  #result {
+    text-align: center;
+  }
+</style>
+
+</html>
