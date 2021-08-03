@@ -20,7 +20,7 @@
    * @param {string} s
    * @return {string}
    */
-  var longestPalindrome = function (s) {
+  var longestPalindrome1 = function (s) {
     let len = s.length
     if (len < 2) return s
     let maxLen = 1
@@ -58,7 +58,16 @@
     return answer
   };
 
-  const result = longestPalindrome('xxabaxy')
+
+    /**
+   * @中心扩展方法
+   * @param {string} s
+   * @return {string}
+   */
+  var longestPalindrome2 = function (s) {
+    // TO BE CODED...
+  }
+  const result = longestPalindrome1('xxabaxy')
   document.querySelector('#result').innerHTML = result
 
 </script>
