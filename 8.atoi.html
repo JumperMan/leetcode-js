@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>8.atoi</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>8.atoi</h2>
+
+  </div>
+  <div id='result'></div>
+</body>
+<script>
+  /**
+   * @param {string} s
+   * @return {number}
+   */
+  var myAtoi = function (s) {
+    let newString = ''
+    let i = 0
+    s = s.trim()
+    let isPositiveNumber = true
+    // judege if is positive number, and deal with the sign bit
+    if (s.charAt(0) === '-') {
+      i++
+      isPositiveNumber = false
+    } else if (s.charAt(0) === '+') {
+      i++
+    }
+    for (i; i < s.length; i++) {
+      let char = s.charAt(i)
+      // break when encounting a NaN
+      if (isNaN(char) || char === ' ') {
+        break
+      } else if (!isNaN(char)) {
+        newString += char
+      }
+    }
+    let newNumber = Number(newString)
+    if (!isPositiveNumber) newNumber = -newNumber
+    if (newNumber < (-2) ** 31) newNumber = (-2) ** 31
+    if (newNumber > 2 ** 31 - 1) newNumber = 2 ** 31 - 1
+    return newNumber
+  };
+
+
+  const result = myAtoi('   +0123')
+  console.log(result)
+  document.querySelector('#result').innerHTML = result
+
+</script>
+<style>
+  #leetcode-box {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: baseline;
+  }
+
+  #result {
+    text-align: center;
+  }
+</style>
+
+</html>
