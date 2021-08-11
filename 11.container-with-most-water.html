@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11.container-with-most-water</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>11.container-with-most-water</h2>
+
+  </div>
+  <div id='result'></div>
+</body>
+<script>
+  /**
+ * @param {number[]} height
+ * @return {number}
+ */
+  var maxArea = function (height) {
+    // 1.violent way (cost too much time)
+    // const n = height.length
+    // let max = 0
+    // for (let i = 0; i < n-1; i++) {
+    //   for (let j = i + 1; j < n; j++) {
+    //     let area = (j - i) * Math.min(height[i], height[j])
+    //     // console.log(i,j , area)
+    //     if (max < area) max = area
+    //   }
+    // }
+    // return max
+
+    // 2.double pointer
+    let max = 0
+    let l = 0
+    let r = height.length - 1
+    while (l < r) {
+      max = Math.max(max, (r - l) * Math.min(height[l], height[r]))
+      if (height[l] < height[r]) {
+        l++
+      } else {
+        r--
+      }
+    }
+    return max
+
+  };
+  let result = 'no data available'
+  // height = [1, 8, 6, 2]
+  height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
+  result = maxArea(height)
+  document.querySelector('#result').innerHTML = 'result is:' + result
+</script>
+<style>
+  #leetcode-box {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: baseline;
+  }
+
+  #result {
+    text-align: center;
+  }
+</style>
+
+</html>
