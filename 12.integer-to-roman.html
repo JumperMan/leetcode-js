@@ -20,11 +20,18 @@
  * @param {number} num
  * @return {string}
  */
+    var floor = function (num, multiple) {
+      return Math.floor(num / multiple)
+    }
     var intToRoman = function (num) {
-
+      let M = ["", "M", "MM", "MMM"] // 1000，2000，3000
+      let C = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"] // 100~900
+      let X = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"] // 10~90
+      let I = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"] // 1~9
+      return M[floor(num, 1000)] + C[floor(num % 1000, 100)] + X[floor(num % 100, 10)] + I[num % 10]
     };
     let result = 'no data available'
-
+    result = intToRoman(1994)
     document.querySelector('#result').innerHTML = 'result is:' + result
   </script>
 </body>
