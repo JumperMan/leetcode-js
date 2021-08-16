@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+  <style>
+    @import url(css/global.css);
+  </style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>blank</title>
@@ -10,26 +13,13 @@
 <body>
   <div id='leetcode-box'>
     <h2>blank</h2>
-
   </div>
   <div id='result'></div>
+  <script>
+    let result = 'no data available'
+    
+    document.querySelector('#result').innerHTML = 'result is:' + result
+  </script>
 </body>
-<script>
-  let result = 'no data available'
-  
-  document.querySelector('#result').innerHTML = 'result is:' + result
-</script>
-<style>
-  #leetcode-box {
-    display: flex;
-    /* flex-direction: column; */
-    justify-content: center;
-    align-items: baseline;
-  }
-
-  #result {
-    text-align: center;
-  }
-</style>
 
 </html>
