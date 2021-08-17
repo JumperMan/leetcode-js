@@ -16,9 +16,22 @@
   </div>
   <div id='result'></div>
   <script>
+    var strStr = function (haystack, needle) {
+      // return haystack.indexOf(needle) // if use the indexOf API
+      if (needle === '') return 0
+      let stringArray = haystack.split('')
+      const NEEDLE_LENGTH = needle.length
+      for (let i = 0; i < stringArray.length; i++) {
+        // both of the heads and the tails are the same
+        if (stringArray[i] === needle.charAt(0) && stringArray[i + NEEDLE_LENGTH - 1] === needle.charAt(NEEDLE_LENGTH - 1)) {
+          if (haystack.substring(i, i + NEEDLE_LENGTH) === needle) return i
+        }
+      }
+      return -1
+    }
     let result = 'no data available'
-    
-    document.querySelector('#result').innerHTML = 'result is:' + result
+    result = strStr('hello', 'll')
+    document.querySelector('#result').innerHTML = 'result is: ' + result
   </script>
 </body>
 
