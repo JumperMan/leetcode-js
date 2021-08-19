@@ -17,19 +17,21 @@
   <div id='result'></div>
   <script>
     var strStr = function (haystack, needle) {
-      // return haystack.indexOf(needle) // if use the indexOf API
-      if (needle === '') return 0
-      let stringArray = haystack.split('')
+      // 1.brute force
+      if (needle === '' || needle === haystack) return 0
       const NEEDLE_LENGTH = needle.length
-      for (let i = 0; i < stringArray.length; i++) {
+      const FIRST_CHAR = needle.charAt(0)
+      const LAST_CHAR = needle.charAt(NEEDLE_LENGTH - 1)
+      for (let i = 0; i <= haystack.length - NEEDLE_LENGTH; i++) {
         // both of the heads and the tails are the same
-        if (stringArray[i] === needle.charAt(0) && stringArray[i + NEEDLE_LENGTH - 1] === needle.charAt(NEEDLE_LENGTH - 1)) {
+        if (haystack.charAt(i) === FIRST_CHAR && haystack.charAt(i + NEEDLE_LENGTH - 1) === LAST_CHAR) {
           if (haystack.substring(i, i + NEEDLE_LENGTH) === needle) return i
         }
       }
       return -1
+      // 2.alternative, KMP algorithm
     }
-    let result = 'no data available'
+    let result = 'no data avail`ble'
     result = strStr('hello', 'll')
     document.querySelector('#result').innerHTML = 'result is: ' + result
   </script>
