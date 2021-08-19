@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>15.3sum</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>15.3sum</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {number[]} nums
+     * @return {number[][]}
+     */
+    var threeSum = function (nums) {
+      const LEN = nums.length
+      let hash = new Array(LEN)
+      let foundArray = []
+      let foundIndex = []
+      if (nums.length < 3) return []
+      for (let i = 0; i < LEN; i++) {
+        hash[i] = []
+        for (let j = i + 1; j < LEN; j++) {
+          hash[i][j] = nums[i] + nums[j]
+        }
+      }
+      for (let k = 0; k < LEN - 2; k++) {
+        for (let i = 0; i < LEN; i++) {
+          for (let j = i + 1; j < LEN; j++) {
+            if (foundIndex.indexOf(k) === -1 && k !== i && nums[k] + hash[i][j] === 0) {
+              foundIndex.push(i)
+              foundIndex.push(j)
+              foundArray.push([nums[k], nums[i], nums[j]])
+            }
+          }
+        }
+      }
+      console.log('before', foundArray)
+      let filterArray = [...foundArray]
+      let count = 0
+      for (let i = 1; i < foundArray.length; i++) {
+        if (foundArray[0].sort().toString() === foundArray[i].sort().toString()) {
+          filterArray.splice(i - count, 1)
+          count++
+        }
+      }
+      console.log('after', filterArray)
+      return filterArray
+    };
+    let result = 'no data available'
+    result = threeSum([-2, 0, 0, 2, 2])
+    // result = threeSum([-1,0,1,2,-1,-4,-2,-3,3,0,4])
+    document.querySelector('#result').innerHTML = 'result is: ' + result
+  </script>
+</body>
+
+</html>
