@@ -20,44 +20,48 @@
      * @param {number[]} nums
      * @return {number[][]}
      */
+    // INSPIRED by https://leetcode-cn.com/problems/3sum/solution/pai-xu-shuang-zhi-zhen-zhu-xing-jie-shi-python3-by/
     var threeSum = function (nums) {
       const LEN = nums.length
-      let hash = new Array(LEN)
-      let foundArray = []
-      let foundIndex = []
-      if (nums.length < 3) return []
-      for (let i = 0; i < LEN; i++) {
-        hash[i] = []
-        for (let j = i + 1; j < LEN; j++) {
-          hash[i][j] = nums[i] + nums[j]
-        }
+      if (LEN < 3) {
+        return []
       }
-      for (let k = 0; k < LEN - 2; k++) {
-        for (let i = 0; i < LEN; i++) {
-          for (let j = i + 1; j < LEN; j++) {
-            if (foundIndex.indexOf(k) === -1 && k !== i && nums[k] + hash[i][j] === 0) {
-              foundIndex.push(i)
-              foundIndex.push(j)
-              foundArray.push([nums[k], nums[i], nums[j]])
-            }
+      nums.sort((a, b) => a - b)
+      let res = []
+
+      for (let i = 0; i < LEN; i++) {
+        if (nums[i] > 0) {
+          // console.log(res)
+          return res
+        }
+        if (i > 0 && nums[i] === nums[i - 1])
+          continue
+        let L = i + 1
+        let R = LEN - 1
+        while (L < R) {
+          if (nums[i] + nums[L] + nums[R] == 0) {
+            res.push([nums[i], nums[L], nums[R]])
+            while (L < R && nums[L] == nums[L + 1]) { L++ }
+            while (L < R && nums[R] === nums[R - 1]) { R-- }
+            L++
+            R--
+          } else if (nums[i] + nums[L] + nums[R] > 0) {
+            R--
+          } else {
+            L++
           }
         }
       }
-      console.log('before', foundArray)
-      let filterArray = [...foundArray]
-      let count = 0
-      for (let i = 1; i < foundArray.length; i++) {
-        if (foundArray[0].sort().toString() === foundArray[i].sort().toString()) {
-          filterArray.splice(i - count, 1)
-          count++
-        }
-      }
-      console.log('after', filterArray)
-      return filterArray
+      return res
     };
+
     let result = 'no data available'
-    result = threeSum([-2, 0, 0, 2, 2])
-    // result = threeSum([-1,0,1,2,-1,-4,-2,-3,3,0,4])
+    // result = threeSum([0, 0, 0, 0])
+    // result = threeSum([-1, 0, 1, 0])
+    // result = threeSum([-2, 0, 0, 2, 2])
+    result = threeSum([-1, 0, 1, 2, -1, -4, -2, -3, 3, 0, 4]) // resutl length equals 9, but got 6
+    // result = threeSum([1,2,-2,-1])
+
     document.querySelector('#result').innerHTML = 'result is: ' + result
   </script>
 </body>
