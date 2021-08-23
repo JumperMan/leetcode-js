@@ -1,7 +1,10 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
+  <style>
+    @import url(css/global.css);
+  </style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>10.regular-expression-matching</title>
@@ -13,34 +16,23 @@
 
   </div>
   <div id='result'></div>
+
+  <script>
+    /**
+     * @param {string} s
+     * @param {string} p
+     * @return {boolean}
+     */
+    var isMatch = function (s, p) {
+      const reg = new RegExp(`^${p}$`)
+      return reg.test(s)
+    };
+    let result = 'no data available'
+    result = isMatch('aab', 'a*b')
+    console.log(result)
+    document.querySelector('#result').innerHTML = result
+
+  </script>
 </body>
-<script>
-  /**
-   * @param {string} s
-   * @param {string} p
-   * @return {boolean}
-   */
-  var isMatch = function (s, p) {
-    const reg = new RegExp(`^${p}$`)
-    return reg.test(s)
-  };
-  let result = 'no data available'
-  result = isMatch('aab','a*b')
-  console.log(result)
-  document.querySelector('#result').innerHTML = result
-
-</script>
-<style>
-  #leetcode-box {
-    display: flex;
-    /* flex-direction: column; */
-    justify-content: center;
-    align-items: baseline;
-  }
-
-  #result {
-    text-align: center;
-  }
-</style>
 
 </html>

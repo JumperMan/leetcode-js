@@ -1,0 +1,10 @@
+#leetcode-box {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: baseline;
+}
+
+#result {
+  text-align: center;
+}

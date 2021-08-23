@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+  <style>
+    @import url(css/global.css);
+  </style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>7.reverse-integer</title>
@@ -13,42 +16,31 @@
 
   </div>
   <div id='result'></div>
+
+  <script>
+    /**
+     * @param {number} x
+     * @return {number}
+     */
+    /**
+     * @param {number} x
+     * @return {number}
+     */
+    var reverse = function (x) {
+      const isPositveNumber = x >= 0 ? true : false
+      const num = isPositveNumber ? x : -x
+      let res = Number(num.toString().split('').reverse().join(''))
+      if (!isPositveNumber) res = -res
+      if (res <= -(2 ** 31) - 1 || res >= 2 ** 31 - 1) return 0
+      return res
+    };
+
+    let result = 0
+    result = reverse(-31245324)
+    console.log(result, typeof result)
+    document.querySelector('#result').innerHTML = result
+
+  </script>
 </body>
-<script>
-  /**
-   * @param {number} x
-   * @return {number}
-   */
-  /**
-   * @param {number} x
-   * @return {number}
-   */
-  var reverse = function (x) {
-    const isPositveNumber = x >= 0 ? true : false
-    const num = isPositveNumber ? x : -x
-    let res = Number(num.toString().split('').reverse().join(''))
-    if (!isPositveNumber) res = -res
-    if (res <= -(2 ** 31) - 1 || res >= 2 ** 31 - 1) return 0
-    return res
-  };
-
-  let result = 0
-  result = reverse(-31245324)
-  console.log(result, typeof result)
-  document.querySelector('#result').innerHTML = result
-
-</script>
-<style>
-  #leetcode-box {
-    display: flex;
-    /* flex-direction: column; */
-    justify-content: center;
-    align-items: baseline;
-  }
-
-  #result {
-    text-align: center;
-  }
-</style>
 
 </html>

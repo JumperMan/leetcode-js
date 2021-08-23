@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+  <style>
+    @import url(css/global.css);
+  </style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>blank</title>
@@ -13,50 +16,50 @@
 
   </div>
   <div id='result'></div>
-</body>
-<script>
-  /**
-   * @动态规划
-   * @param {string} s
-   * @return {string}
-   */
-  var longestPalindrome1 = function (s) {
-    let len = s.length
-    if (len < 2) return s
-    let maxLen = 1
-    let begin = 0
 
-    // dp[i][j] 表示 s[i..j] 是否回文串
-    let dp = []
-    for (let i = 0; i < len; i++) {
-      dp[i] = []
-      for (let j = 0; j < len; j++)
-        dp[i][i] = true
-    }
-    const charArray = s.split('')
-    // 左下角先填写
-    for (let j = 1; j < len; j++) {
-      for (let i = 0; i < j; i++) {
-        if (charArray[i] !== charArray[j]) {
-          dp[i][j] = false
-        } else {
-          if (j - i < 3) {
-            dp[i][j] = true
+  <script>
+    /**
+     * @动态规划
+     * @param {string} s
+     * @return {string}
+     */
+    var longestPalindrome1 = function (s) {
+      let len = s.length
+      if (len < 2) return s
+      let maxLen = 1
+      let begin = 0
+
+      // dp[i][j] 表示 s[i..j] 是否回文串
+      let dp = []
+      for (let i = 0; i < len; i++) {
+        dp[i] = []
+        for (let j = 0; j < len; j++)
+          dp[i][i] = true
+      }
+      const charArray = s.split('')
+      // 左下角先填写
+      for (let j = 1; j < len; j++) {
+        for (let i = 0; i < j; i++) {
+          if (charArray[i] !== charArray[j]) {
+            dp[i][j] = false
           } else {
-            dp[i][j] = dp[i + 1][j - 1]
+            if (j - i < 3) {
+              dp[i][j] = true
+            } else {
+              dp[i][j] = dp[i + 1][j - 1]
+            }
+          }
+          // 只要dp[i][j] === true, 表示子串 s[i..j] 是回文, 记录maxLen, i
+          if (dp[i][j] && j - i + 1 > maxLen) {
+            maxLen = j - i + 1
+            begin = i
           }
         }
-        // 只要dp[i][j] === true, 表示子串 s[i..j] 是回文, 记录maxLen, i
-        if (dp[i][j] && j - i + 1 > maxLen) {
-          maxLen = j - i + 1
-          begin = i
-        }
       }
-    }
-    const answer = s.substring(begin, maxLen + begin)
-    console.log(answer)
-    return answer
-  };
+      const answer = s.substring(begin, maxLen + begin)
+      console.log(answer)
+      return answer
+    };
 
 
     /**
@@ -64,24 +67,13 @@
    * @param {string} s
    * @return {string}
    */
-  var longestPalindrome2 = function (s) {
-    // TO BE CODED...
-  }
-  const result = longestPalindrome1('xxabaxy')
-  document.querySelector('#result').innerHTML = result
+    var longestPalindrome2 = function (s) {
+      // TO BE CODED...
+    }
+    const result = longestPalindrome1('xxabaxy')
+    document.querySelector('#result').innerHTML = result
 
-</script>
-<style>
-  #leetcode-box {
-    display: flex;
-    /* flex-direction: column; */
-    justify-content: center;
-    align-items: baseline;
-  }
-
-  #result {
-    text-align: center;
-  }
-</style>
+  </script>
+</body>
 
 </html>
