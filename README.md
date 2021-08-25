@@ -1,7 +1,7 @@
 # leetcode-js
 leetcode with JavaScript
 
-Any questions, raise an [issues](https://github.com/JumperMan/leetcode-js/issues)
+Any questions, raise [issues](https://github.com/JumperMan/leetcode-js/issues)
 
 ## Main topic
 From 1. to 999. (if exists)
