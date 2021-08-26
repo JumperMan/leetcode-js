@@ -7,17 +7,29 @@
   </style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>blank</title>
+  <title>18.4sum</title>
 </head>
 
 <body>
   <div id='leetcode-box'>
-    <h2>blank</h2>
+    <h2>18.4sum</h2>
   </div>
   <div id='result'></div>
-  <script>
+  <script type="text/javascript">
+    /**
+     * @param {number[]} nums
+     * @param {number} target
+     * @return {number[][]}
+     */
+    var fourSum = function (nums, target) {
+      // example
+      let res = [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
+      return res
+    };
     let result = 'no data available'
-    
+    const nums = [1,0,-1,0,-2,2]
+    const target = 0
+    result = fourSum(nums, target)
     document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
   </script>
 </body>
