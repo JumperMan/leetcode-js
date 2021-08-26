@@ -21,13 +21,37 @@
      * @param {number} target
      * @return {number[][]}
      */
+    // INSPIRED BY https://leetcode.com/problems/4sum/discuss/1160961/JS-or-4Sum-commented-solution
     var fourSum = function (nums, target) {
-      // example
-      let res = [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
+      const LEN = nums.length - 1
+      let sum = 0
+      let res = []
+      nums.sort((a, b) => a - b)
+      for (let i = 0, j = i + 1, left = j + 1, right = LEN; i < LEN - 2; j = ++i + 1) {
+        if (nums[i] === nums[i - 1]) continue
+
+        // Using tow pointers concept as used for 3sum
+        for (left = j + 1, right = LEN; j < LEN - 1; left = ++j + 1, right = LEN) {
+          if (nums[j] === nums[j - 1] && j !== i + 1) continue
+
+          while (left < right) {
+            sum = nums[i] + nums[j] + nums[left] + nums[right]
+
+            if (sum === target) {
+              res.push([nums[i], nums[j], nums[left], nums[right]])
+
+              while (nums[left] === nums[++left]) { }
+              while (nums[right] === nums[--right]) { }
+
+            } else if (sum > target) right--
+            else left++
+          }
+        }
+      }
       return res
-    };
+    }
     let result = 'no data available'
-    const nums = [1,0,-1,0,-2,2]
+    const nums = [-3, -2, -1, 0, 0, 1, 2, 3]
     const target = 0
     result = fourSum(nums, target)
     document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
