@@ -57,13 +57,10 @@
         return
       }
       if (left > 0) {
-        parenthesis += '('
-        helper(left - 1, right, parenthesis, answer)
-        parenthesis = parenthesis.substring(0, parenthesis.length - 1)
+        helper(left - 1, right, parenthesis + '(', answer)
       }
       if (right > left) {
-        parenthesis += ')'
-        helper(left, right - 1, parenthesis, answer)
+        helper(left, right - 1, parenthesis + ')', answer)
       }
     }
     var generateParenthesis = function (n) {
