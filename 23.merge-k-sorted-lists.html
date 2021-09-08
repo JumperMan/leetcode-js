@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>23.merge-k-sorted-lists</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>23.merge-k-sorted-lists</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * Definition for singly-linked list.
+     * function ListNode(val, next) {
+     *     this.val = (val===undefined ? 0 : val)
+     *     this.next = (next===undefined ? null : next)
+     * }
+     */
+    /**
+     * @param {ListNode[]} lists
+     * @return {ListNode}
+     */
+    var mergeLists = function (l1, l2) {
+      // 1. brute force, just like the 21st topic.
+      const DUMMY = new ListNode(0)
+      let prev = DUMMY
+      while (l1 && l2) {
+        if (l1.val < l2.val) {
+          prev.next = l1
+          l1 = l1.next
+        } else {
+          prev.next = l2
+          l2 = l2.next
+        }
+        prev = prev.next
+      }
+      prev.next = l1 ? l1 : l2
+      return DUMMY.next
+    }
+    var mergeKLists = function (lists) {
+      if (lists.length === 0) return null
+      while (lists.length > 1) {
+        let lastA = lists.shift()
+        let lastB = lists.shift()
+        const result = mergeLists(lastA, lastB)
+        lists.push(result)
+      }
+      return lists[0]
+    }
+    let result = 'no data available'
+
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
