@@ -7,17 +7,71 @@
   </style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>blank</title>
+  <title>22.generate-parentheses</title>
 </head>
 
 <body>
   <div id='leetcode-box'>
-    <h2>blank</h2>
+    <h2>22.generate-parentheses</h2>
   </div>
   <div id='result'></div>
   <script>
+    /**
+    * @param {number} n
+    * @return {string[]}
+    */
+
+    // 1. brute force
+    // var generateParenthesis = function (n) {
+    //   let combinations = []
+    //   generateAll(new Array(2 * n), 0, combinations)
+    //   return combinations
+    // }
+    // const generateAll = function (current, pos, result) {
+    //   if (pos === current.length) {
+    //     if (valid(current)) {
+    //       result.push(current.join(''))
+    //     }
+    //   } else {
+    //     current[pos] = '('
+    //     generateAll(current, pos + 1, result)
+    //     current[pos] = ')'
+    //     generateAll(current, pos + 1, result)
+    //   }
+    // }
+    // const valid = function (current) {
+    //   console.log(current)
+    //   let balance = 0
+    //   for (let i = 0; i < current.length; i++) {
+    //     if (current[i] === '(') balance++
+    //     else balance--
+    //     if (balance < 0) return false
+    //   }
+    //   return balance === 0
+    // }
+
+    // 2. traceback
+    const helper = function (left, right, parenthesis, answer) {
+      if (left === 0 && right === 0) {
+        answer.push(parenthesis)
+        return
+      }
+      if (left > 0) {
+        helper(left - 1, right, parenthesis + '(', answer)
+      }
+      if (right > left) {
+        helper(left, right - 1, parenthesis + ')', answer)
+      }
+    }
+    var generateParenthesis = function (n) {
+      let answer = []
+      let parenthesis = ''
+      helper(n, n, parenthesis, answer)
+      return answer
+    }
     let result = 'no data available'
-    
+    result = generateParenthesis(3)
+    console.log('result', result)
     document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
   </script>
 </body>
