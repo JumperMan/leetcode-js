@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url('../css/global.css');
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>w2.currying</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>w2.currying</h2>
+  </div>
+  <div id='result'></div>
+  <script src="../js/lodash.min.js"></script>
+  <script>
+    /*
+     * learn the currying, https://en.wikipedia.org/wiki/Currying
+     */
+
+    // 1.custom currying
+    // function curry(f) { // curry(f) 执行柯里化转换
+    //   return function (a) {
+    //     return function (b) {
+    //       return f(a, b);
+    //     };
+    //   };
+    // }
+    function sum(a, b) {
+      console.log(a, b)
+      return a + b;
+    }
+
+    // 2.lodash curry()
+    let curriedSum = _.curry(sum);
+
+    let result = 'no data available'
+    result = curriedSum(1)(2) 
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
