@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>482.license-key-formatting</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>482.license-key-formatting</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+    * @param {string} s
+    * @param {number} k
+    * @return {string}
+    */
+    var licenseKeyFormatting = function (s, k) {
+      let input = s.split('-').join('').toUpperCase()
+      let output = []
+      const quotient = parseInt(input.length / k) // 取商
+      const remainder = input.length % k // 取余数
+
+      if (remainder !== 0) output.push(input.substring(0, remainder))
+      for (let i = 0; i < quotient; i++) {
+        let sub = input.substring(remainder + k * i, remainder + k * i + k)
+        output.push(sub)
+      }
+      output = output.join('-')
+      return output
+    }
+    const s = '2-5g-3-J'
+    const k = 2
+    licenseKeyFormatting(s, k)
+    let result = 'no data available'
+
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
