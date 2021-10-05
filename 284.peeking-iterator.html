@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>284.peeking-iterator</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>284.peeking-iterator</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    var PeekingIterator = function (iterator) {
+      this.iterator = iterator
+      this.nextElement = this.iterator.next()
+    }
+    PeekingIterator.prototype.peek = function () {
+      return this.nextElement
+    }
+
+    PeekingIterator.prototype.next = function () {
+      const ret = this.nextElement
+      this.nextElement = this.iterator.hasNext() ? this.iterator.next() : null
+      return ret
+    }
+    PeekingIterator.prototype.hasNext = function () {
+      return this.nextElement != null
+    }
+    let result = 'no data available'
+
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
