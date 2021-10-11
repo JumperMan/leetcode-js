@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>187.repeated-dna-sequences</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>187.repeated-dna-sequences</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+    * @param {string} s
+    * @return {string[]}
+    */
+    var findRepeatedDnaSequences = function (s) {
+      // 1.brute force with Map
+      // const L = 10
+      // const result = []
+      // const map = new Map()
+      // const n = s.length
+      // for (let i = 0; i <= n - L; i++) {
+      //   const sub = s.substring(i, i + L)
+      //   map.set(sub, (map.get(sub) || 0) + 1)
+      //   if (map.get(sub) === 2) result.push(sub)
+      // }
+      // return result
+
+      // 2.brute force with Set
+      // const L = 10
+      // const result = new Set()
+      // const set = new Set()
+      // const n = s.length
+      // for (let i = 0; i <= n - L; i++) {
+      //   const sub = s.substring(i, i + L)
+      //   if (!set.has(sub)) {
+      //     set.add(sub)
+      //   } else {
+      //     result.add(sub)
+      //   }
+      // }
+      // return [...result]
+
+      // 3. use the bit
+      const L = 10
+      const bin = new Map()
+      bin.set('A', 0)
+      bin.set('C', 1)
+      bin.set('G', 2)
+      bin.set('T', 3)
+
+      const result = []
+      const n = s.length
+      if (n <= L) return result
+
+      let x = 0
+      for (let i = 0; i < L - 1; i++) {
+        x = (x << 2) | bin.get(s[i])
+      }
+      const map = new Map()
+      for (let i = 0; i <= n - L; i++) {
+        x = ((x << 2) | bin.get(s[i + L - 1])) & ((1 << (L * 2)) - 1)
+        map.set(x, (map.get(x) || 0) + 1)
+        if (map.get(x) === 2) {
+          result.push(s.substring(i, i + L))
+        }
+      }
+      return result
+    }
+
+    let result = 'no data available'
+    const s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
+    result = findRepeatedDnaSequences(s)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>

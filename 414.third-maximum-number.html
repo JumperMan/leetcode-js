@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>414.third-maximum-number</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>414.third-maximum-number</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+   * @param {number[]} nums
+   * @return {number}
+   */
+    var thirdMax = function (nums) {
+      // 1.sort
+      nums.sort((pre, next) => next - pre)
+      for (let i = 1, diff = 1; i < nums.length; i++) {
+        if (nums[i - 1] !== nums[i] && ++diff === 3) {
+          return nums[i]
+        }
+      }
+      return nums[0]
+
+      // 2.ordered set
+      // const newSet = new Set()
+      // for (let i = 0; i < 3; i++) {
+      //   if (typeof nums[i] === 'number') newSet.add(nums[i])
+      // }
+      // for (let i = 2; i < nums.length; i++) {
+      //   if (typeof nums[i] === 'number') {
+      //     newSet.add(nums[i])
+      //     if (newSet.size > 3) {
+      //       const first = [...new Set(newSet)].sort((pre, next) => pre - next).shift()
+      //       newSet.delete(first)
+      //     }
+      //   }
+      // }
+      // const ordered = [...new Set(newSet)].sort((pre, next) => pre - next)
+      // return ordered.length === 3 ? ordered[0] : ordered[ordered.length - 1]
+
+      // 3.use the Set and Math.max()
+      // if (nums.length < 3) return Math.max(...nums)
+      // const res = [...new Set([...nums])].sort((pre, next) => next - pre)
+      // return res.length >= 3 ? res[2] : Math.max(...res)
+    }
+    let result = 'no data available'
+    const nums = [1, 2, 2]
+    result = thirdMax(nums)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
