@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>704.binary-search</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>704.binary-search</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {number[]} nums
+     * @param {number} target
+     * @return {number}
+     */
+    var search = function (nums, target) {
+      // 1.brute-force
+      // for (let i = 0; i < nums.length; i++) {
+      //   if (target === nums[i]) {
+      //     return i
+      //   }
+      // }
+      // return -1
+
+      // 2.binary-search
+      let left = 0, right = nums.length - 1
+      while (left <= right) {
+        let mid = ((right - left) >> 1) + left
+        // let mid = Math.floor((right - left) / 2 + left)
+        let midValue = nums[mid]
+        if (midValue !== target) {
+          if (midValue > target) {
+            right = mid - 1
+          } else {
+            left = mid + 1
+          }
+        } else {
+          return mid
+        }
+      }
+      return -1
+    }
+    let result = 'no data available'
+    const nums = [-1, 0, 3, 5, 9, 12], target = 9
+    result = search(nums, target)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
