@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>575.distribute-candies</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>575.distribute-candies</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {number[]} candyType
+     * @return {number}
+     */
+    var distributeCandies = function (candyType) {
+      const set = new Set(candyType)
+      return Math.min(set.size, candyType.length / 2)
+    }
+    let result = 'no data available'
+    const candyType = [1,1,1,1]
+    result = distributeCandies(candyType)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
