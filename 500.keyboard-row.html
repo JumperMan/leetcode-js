@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>500.keyboard-row</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>500.keyboard-row</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+var findWords = function (words) {
+  const list = []
+  const alphabetIndex = '12210111011122000010020202' // a to z
+  const charCodeA = 'a'.charCodeAt() // 97
+  for (const word of words) {
+    let isValid = true
+    const firstIndex = alphabetIndex[word[0].toLowerCase().charCodeAt() - charCodeA]
+    for (let i = 1; i < word.length; ++i) {
+      if (alphabetIndex[word[i].toLowerCase().charCodeAt() - charCodeA] !== firstIndex) {
+        isValid = false
+        break
+      }
+    }
+    if (isValid) list.push(word)
+  }
+  return list
+}
+    let result = 'no data available'
+    const words = ["qz","wq","asdddafadsfa"]
+    result = findWords(words)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
