@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>563.binary-tilt</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>563.binary-tilt</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * Definition for a binary tree node.
+     * function TreeNode(val, left, right) {
+     *     this.val = (val===undefined ? 0 : val)
+     *     this.left = (left===undefined ? null : left)
+     *     this.right = (right===undefined ? null : right)
+     * }
+     */
+    /**
+     * @param {TreeNode} root
+     * @return {number}
+     */
+    const findTilt = function (root) {
+      let ans = 0
+      const dfs = (node) => {
+        if (!node) return 0
+        const sumLeft = dfs(node.left)
+        const sumRight = dfs(node.right)
+        ans += Math.abs(sumLeft - sumRight)
+        return sumLeft + sumRight + node.val
+      }
+      dfs(root)
+      return ans
+    }
+    let result = 'no data available'
+
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
