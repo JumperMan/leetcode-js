@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1005.maximize-sum-of-array-after-k-negations</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>1005.maximize-sum-of-array-after-k-negations</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {number[]} nums
+     * @param {number} k
+     * @return {number}
+     */
+    const largestSumAfterKNegations = function (nums, k) {
+      let sum = 0
+      nums.sort((a, b) => a - b)
+      for (let i = 0; i < nums.length && k > 0; ++i) {
+        if (nums[i] < 0) {
+          nums[i] *= -1
+          k--
+        } else if (nums[i] === 0)
+          k = 0
+      }
+      if (k % 2) {
+        nums.sort((a, b) => a - b)
+        nums[0] *= -1
+      }
+      sum = nums.reduce((a, b) => a + b)
+      return sum
+    }
+
+    const nums = [4, 2, 3],
+      k = 1
+    // const nums = [2, -3, -1, 5, -4],
+    //   k = 2
+    let result = 'no data available'
+    result = largestSumAfterKNegations(nums, k)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
