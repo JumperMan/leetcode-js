@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1816.truncate-sentence</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>1816.truncate-sentence</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {string} s
+     * @param {number} k
+     * @return {string}
+     */
+    var truncateSentence = function (s, k) {
+      // 1.use the functions of 'split, splice, join' of array 
+      let res = s.split(' ').splice(0, k).join(' ')
+      return res
+
+      // 2.use String.slice() by recording the words and end
+      // const n = s.length
+      // let end = 0,
+      //   count = 0
+      // for (let i = 1; i <= n; ++i) {
+      //   if (i === n || s[i] === ' ') {
+      //     count++
+      //     if (count === k) {
+      //       end = i
+      //       break
+      //     }
+      //   }
+      // }
+      // return s.slice(0, end)
+    }
+    let result = 'no data available'
+    // const s = "Hello how are you Contestant",
+    // k = 4
+    const s = "What is the solution to this problem",
+      k = 4
+    result = truncateSentence(s, k)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>

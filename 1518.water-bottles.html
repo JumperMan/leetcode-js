@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1518.water-bottles</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>1518.water-bottles</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {number} numBottles
+     * @param {number} numExchange
+     * @return {number}
+     */
+    var numWaterBottles = function (numBottles, numExchange) {
+      let ans = 0
+      let empty = 0
+      while (numBottles > 0) {
+        ans += numBottles
+        empty += numBottles
+        numBottles = Math.floor(empty / numExchange)
+        empty = empty % numExchange
+      }
+      console.log(ans, empty)
+      return ans
+    }
+    let result = 'no data available'
+    const numBottles = 15,
+      numExchange = 4
+    result = numWaterBottles(numBottles, numExchange)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
