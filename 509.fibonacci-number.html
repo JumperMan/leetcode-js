@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>509.fibonacci-number</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>509.fibonacci-number</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {number} n
+     * @return {number}
+     */
+    var fib = function (n) {
+      if (n < 2) return n
+      let p = 0,
+        q = 0,
+        r = 1
+      for (let i = 2; i <= n; ++i) {
+        p = q
+        q = r
+        r = p + q
+      }
+      return r
+    }
+
+    let result = 'no data available'
+
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
