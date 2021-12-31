@@ -31,6 +31,17 @@
       }
       return sum === num
     }
+
+
+    var fib_n = function (curr, next, n) {
+      if (n == 0) {
+        return curr;
+      } else {
+        return fib_n(next, curr + next, n - 1);
+      }
+    }
+    return fib_n(0, 1, n);
+
     let result = 'no data available'
 
     document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
