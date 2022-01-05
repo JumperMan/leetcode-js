@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1576.replace-all-s-to-avoid-consecutive-repeating-characters</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>1576.replace-all-s-to-avoid-consecutive-repeating-characters</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {string} s
+     * @return {string}
+     */
+    var modifyString = function (s) {
+      const n = s.length
+      const arr = [...s]
+      const charCodeA = 'a'.charCodeAt() // 97
+      for (let i = 0; i < n; ++i) {
+        if (arr[i] === '?') {
+          for (let j = 0; j < 3; ++j) {
+            if ((i > 0 && arr[i - 1] === String.fromCharCode(charCodeA + j)) ||
+              (i < n - 1 && arr[i + 1] === String.fromCharCode(charCodeA + j))) {
+              continue
+            }
+            arr[i] = String.fromCharCode(charCodeA + j)
+            break
+          }
+        }
+      }
+      return arr.join('')
+    }
+    let result = 'no data available'
+    result = modifyString('?zs')
+
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
