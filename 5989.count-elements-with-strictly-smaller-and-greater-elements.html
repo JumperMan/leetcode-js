@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5989.count-elements-with-strictly-smaller-and-greater-elements</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>5989.count-elements-with-strictly-smaller-and-greater-elements</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    var countElements = function (nums) {
+      let res = 0
+      const n = nums.length
+      const sortedArr = nums.sort((a, b) => a - b) // sort
+      const min = nums[0], max = nums[n - 1]
+      for (let i = 1; i < n - 1; ++i) {
+        let cur = nums[i]
+        // cur is not equals to min and max,
+        // cur is greater than the min, and smaller than the max
+        if (cur !== min && cur > min && cur !== max && cur < max) ++res
+      }
+      return res
+    }
+    let result = 'no data available'
+    // const nums = [11,7,2,15]
+    const nums = [-3, 3, 3, 90]
+    result = countElements(nums)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
