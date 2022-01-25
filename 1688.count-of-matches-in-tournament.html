@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1688.count-of-matches-in-tournament</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>1688.count-of-matches-in-tournament</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {number} n
+     * @return {number}
+     */
+    var numberOfMatches = function (n) {
+      // 1. simulation
+      let matches = 0
+      while (n !== 1) {
+        if (n % 2 === 1) {
+          matches += (n - 1) / 2
+          n = (n - 1) / 2 + 1
+        } else {
+          matches += n / 2
+          n = n / 2
+        }
+      }
+      return matches
+
+      // 2.math
+      // return n - 1
+    }
+    let result = 'no data available'
+    const n = 13
+    result = numberOfMatches(n)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
