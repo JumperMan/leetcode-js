@@ -24,7 +24,7 @@
       this.size = size
       this.cnt = 0
       this.f = 0
-    };
+    }
 
     /** 
      * @param {number} idx
@@ -35,7 +35,7 @@
         ++this.cnt
         ++this.bitSet[idx]
       }
-    };
+    }
 
     /** 
      * @param {number} idx
@@ -47,7 +47,7 @@
         --this.cnt
         ++this.bitSet[idx]
       }
-    };
+    }
 
     /**
      * @return {void}
@@ -55,28 +55,28 @@
     Bitset.prototype.flip = function () {
       this.cnt = this.size - this.cnt
       ++this.f
-    };
+    }
 
     /**
      * @return {boolean}
      */
     Bitset.prototype.all = function () {
       return this.cnt === this.size
-    };
+    }
 
     /**
      * @return {boolean}
      */
     Bitset.prototype.one = function () {
       return this.cnt > 0
-    };
+    }
 
     /**
      * @return {number}
      */
     Bitset.prototype.count = function () {
       return this.cnt
-    };
+    }
 
     /**
      * @return {string}
@@ -87,7 +87,7 @@
         arr.push((this.bitSet[i] + this.f) % 2)
       }
       return arr.join('')
-    };
+    }
 
     /**
      * Your Bitset object will be instantiated and called as such:
