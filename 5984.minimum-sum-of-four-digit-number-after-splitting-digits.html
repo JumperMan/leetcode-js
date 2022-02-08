@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5984.minimum-sum-of-four-digit-number-after-splitting-digits</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>5984.minimum-sum-of-four-digit-number-after-splitting-digits</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {number} num
+     * @return {number}
+     */
+    var minimumSum = function (num) {
+      const arr = num.toString().split('').map(ele => ele - 0).sort()
+      const res = arr[0] * 10 + arr[2] + arr[1] * 10 + arr[3]
+      return res
+    }
+    let result = 'no data available'
+    // const num = 2932
+    const num = 4009
+    result = minimumSum(num)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>

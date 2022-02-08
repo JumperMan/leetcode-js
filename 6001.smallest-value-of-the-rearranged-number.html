@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6001.smallest-value-of-the-rearranged-number</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>6001.smallest-value-of-the-rearranged-number</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+   * @param {number} num
+   * @return {number}
+   */
+    var smallestNumber = function (num) {
+      let resArr = [], res = 0
+      const isPositive = num >= 0 ? true : false
+      if (num > -12 && num < 21) return num // if -12 < num < 21, returen self
+      if (isPositive) { // num >= 21
+        resArr = num.toString().split('').map(_ => +_).sort((pre, next) => pre - next)
+        // console.log(resArr)
+        for (let i = 0; i < resArr.length; ++i) {
+          if (resArr[i] !== 0) {
+            const nonZero = resArr.splice(i, 1)
+            resArr.unshift(nonZero[0])
+            break
+          }
+        }
+      } else { // num <= -12
+        resArr = (-num).toString().split('').map(_ => +_).sort((pre, next) => next - pre)
+      }
+      // console.log(resArr)
+      res = +resArr.join('')
+      return isPositive ? res : -res
+    }
+
+    let result = 'no data available'
+    // const num = 310 // 103
+    const num = -7605 // -7650
+    // const num = -987456789012345
+    // const num = 1000000000000000
+    result = smallestNumber(num)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
