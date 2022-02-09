@@ -34,10 +34,9 @@
       // 2.Map
       let res = 0, n = nums.length
       let map = new Map()
-      for (let i = 0; i < n; ++i) {
-        cur = nums[i]
-        res += (map.get(cur - k) || 0) + (map.get(cur + k) || 0)
-        map.set(cur, (map.get(cur) || 0) + 1)
+      for (let value of nums) { // use the for...of
+        res += (map.get(value - k) || 0) + (map.get(value + k) || 0)
+        map.set(value, (map.get(value) || 0) + 1)
       }
       return res
     }
