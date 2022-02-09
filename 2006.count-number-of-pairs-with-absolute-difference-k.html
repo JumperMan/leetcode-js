@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2006.count-number-of-pairs-with-absolute-difference-k</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>2006.count-number-of-pairs-with-absolute-difference-k</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {number[]} nums
+     * @param {number} k
+     * @return {number}
+     */
+    var countKDifference = function (nums, k) {
+      // 1.brute-force
+      // let res = 0, n = nums.length
+      // for (let i = 0; i < n - 1; ++i) {
+      //   for (let j = i + 1; j < n; ++j) {
+      //     if (Math.abs(nums[i] - nums[j]) === k) ++res
+      //   }
+      // }
+      // return res
+
+      // 2.Map
+      let res = 0, n = nums.length
+      let map = new Map()
+      for (let i = 0; i < n; ++i) {
+        cur = nums[i]
+        res += (map.get(cur - k) || 0) + (map.get(cur + k) || 0)
+        map.set(cur, (map.get(cur) || 0) + 1)
+      }
+      return res
+    }
+
+    let result = 'no data available'
+    const nums = [3, 2, 1, 5, 4, 4], k = 2 // 3
+    result = countKDifference(nums, k)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
