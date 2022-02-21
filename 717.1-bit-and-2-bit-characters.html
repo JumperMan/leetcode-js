@@ -21,11 +21,16 @@
      * @return {boolean}
      */
     var isOneBitCharacter = function (bits) {
-
+      let n = bits.length, i = 0
+      while (i < n - 1) {
+        i += bits[i] + 1
+      }
+      return i === n - 1
     }
     let result = 'no data available'
-    const bits = [1,0,0] // true
-    const bits = [1,1,1,0] // false
+    const bits = [1, 0, 0] // true
+    // const bits = [1, 1, 1, 0] // false
+    result = isOneBitCharacter(bits)
     document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
   </script>
 </body>
