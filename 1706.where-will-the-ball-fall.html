@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1706.where-will-the-ball-fall</title>
+</head>
+
+<body>
+
+  <div id='leetcode-box'>
+    <h2>1706.where-will-the-ball-fall</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {number[][]} grid
+     * @return {number[]}
+     */
+    var findBall = function (grid) {
+      const n = grid[0].length
+      const ans = new Array(n).fill(-1)
+      for (let i = 0; i < n; ++i) {
+        let col = i // init column
+        for (const row of grid) {
+          const dir = row[col]
+          col += dir // move ball
+          if (col < 0 || col === n || row[col] !== dir) { // arrive the side or come across the 'V'
+            col = -1
+            break
+          }
+        }
+        if (col >= 0) { // arrive the bottom
+          ans[i] = col
+        }
+      }
+      return ans
+    }
+
+    let result = 'no data available'
+    // const grid = [[1, 1, 1, -1, -1], [1, 1, 1, -1, -1], [-1, -1, -1, 1, 1], [1, 1, 1, 1, -1], [-1, -1, -1, -1, -1]] // [1,-1,-1,-1,-1]
+    // const grid = [[-1]] // [-1]
+    const grid = [[1, 1, 1, 1, 1, 1], [-1, -1, -1, -1, -1, -1], [1, 1, 1, 1, 1, 1], [-1, -1, -1, -1, -1, -1]] // [0,1,2,3,4,-1]
+
+    result = findBall(grid)
+    document.querySelector('#result').innerHTML = 'result is: ' + iSON.stringify(result)
+  </script>
+</body>
+
+</html>
