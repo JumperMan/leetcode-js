@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>521.longest-uncommon-subsequence-i</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>521.longest-uncommon-subsequence-i</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {string} a
+     * @param {string} b
+     * @return {number}
+     */
+    var findLUSlength = function (a, b) {
+      return a !== b ? Math.max(a.length, b.length) : -1
+    }
+
+    let result = 'no data available'
+    const a = "aba", b = "cdc" // 3
+    const a = "aaa", b = "bbb" // 3
+    const a = "aaa", b = "aaa" // -1
+    result = findLUSlength(a, b)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
