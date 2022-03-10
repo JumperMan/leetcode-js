@@ -28,10 +28,10 @@
         if (!node) return
         res.push(node.val)
         for (const ch of node.children) {
-          helper(ch, res)
+          preorderTree(ch, res)
         }
       }
-      helper(dump, res)
+      preorderTree(dump, res)
       return res
     }
 
