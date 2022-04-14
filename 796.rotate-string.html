@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>796.rotate-string</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>796.rotate-string</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {string} s
+     * @param {string} goal
+     * @return {boolean}
+     */
+    var rotateString = function (s, goal) {
+      // const m = s.length, n = goal.length
+      // if (m !== n) return false
+      // for (let i = 0; i < n; ++i) {
+      //   let flag = true
+      //   for (let j = 0; j < n; ++j) {
+      //     if (s[(i + j) % n] !== goal[j]) {
+      //       flag = false
+      //       break
+      //     }
+      //   }
+      //   if (flag) return true
+      // }
+      // return false
+      return s.length === goal.length && (s + s).indexOf(goal) !== -1
+    }
+    let result = 'no data available'
+    const s = "abcde", goal = "cdeab"
+    result = rotateString(s, goal)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
