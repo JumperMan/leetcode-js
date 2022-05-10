@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1305.all-elements-in-two-binary-search-trees</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>1305.all-elements-in-two-binary-search-trees</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * Definition for a binary tree node.
+     * function TreeNode(val, left, right) {
+     *     this.val = (val===undefined ? 0 : val)
+     *     this.left = (left===undefined ? null : left)
+     *     this.right = (right===undefined ? null : right)
+     * }
+     */
+    /**
+     * @param {TreeNode} root1
+     * @param {TreeNode} root2
+     * @return {number[]}
+     */
+    var getAllElements = function (root1, root2) {
+      const num1 = []
+      const num2 = []
+      const inorder = (node, res) => {
+        if (!node) return
+        inorder(node.left, res)
+        res.push(node.val)
+        inorder(node.right, res)
+      }
+      inorder(root1, num1)
+      inorder(root2, num2)
+      const merged = []
+      let p1 = 0
+      let p2 = 0
+      while (true) {
+        if (p1 === num1.length) {
+          for (let i = p2; i < num2.length; i++) {
+            merged.push(num2[i])
+          }
+          break
+        }
+        if (p2 === num2.length) {
+          for (let i = p1; i < num1.length; i++) {
+            merged.push(num1[i])
+          }
+          break
+        }
+        if (num1[p1] < num2[p2]) {
+          merged.push(num1[p1++])
+        } else {
+          merged.push(num2[p2++])
+        }
+      }
+      return merged
+    }
+
+    let result = 'no data available'
+
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
