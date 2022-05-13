@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>69.sqrtx</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>69.sqrtx</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {number} x
+     * @return {number}
+     */
+    var mySqrt = function (x) {
+      // 1.brute force
+      // if (x === 0) return 0
+      // let ans = parseInt(Math.exp(0.5 * Math.log(x)))
+      // return (ans + 1) * (ans + 1) <= x ? ans + 1 : ans
+
+      // 2.binary search
+      let left = 0, right = x
+      let res = 0
+      while (left <= right) {
+        let mid = left + Math.floor((right - left) / 2)
+        if (mid * mid <= x) {
+          res = mid
+          left = mid + 1
+        } else if (mid * mid > x) {
+          right = mid - 1
+        }
+      }
+      return res
+    }
+    let result = 'no data available'
+    const x = 79
+    result = mySqrt(x)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>

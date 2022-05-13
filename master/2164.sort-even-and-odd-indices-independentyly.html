@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2164.sort-even-and-odd-indices-independentyly</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>2164.sort-even-and-odd-indices-independentyly</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {number[]} nums
+     * @return {number[]}
+     */
+    var sortEvenOdd = function (nums) {
+      const n = nums.length
+      const even = [], odd = [], resArr = []
+      if (n === 2) return nums
+      for (let i = 0; i < n; ++i) {
+        if (i % 2 === 0) {
+          even.push(nums[i])
+        } else {
+          odd.push(nums[i])
+        }
+      }
+      even.sort((pre, next) => pre - next)
+      odd.sort((pre, next) => next - pre)
+      // console.log(even, odd)
+      for (let i = 0; i < odd.length; ++i) {
+        resArr.push(even[i])
+        resArr.push(odd[i])
+      }
+      if (n % 2) resArr.push(even[even.length - 1]) // n is odd
+      return resArr
+    }
+    let result = 'no data available'
+    // const nums = [2, 1]
+    // const nums = [4, 1, 2, 3]
+    const nums = [5,39,33,5,9,14,44,15,21]
+    result = sortEvenOdd(nums)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>

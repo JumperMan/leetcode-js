@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>383.ransom-note</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>383.ransom-note</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {string} ransomNote
+     * @param {string} magazine
+     * @return {boolean}
+     */
+    const canConstruct = function (ransomNote, magazine) {
+      if (ransomNote.length > magazine.length) return false
+      const counts = new Array(26).fill(0)
+      const aCharCode = 'a'.charCodeAt() // 97
+      for (const c of magazine) {
+        ++counts[c.charCodeAt() - aCharCode]
+      }
+      for (const c of ransomNote) {
+        const index = c.charCodeAt() - aCharCode
+        if (--counts[index] === -1) return false
+      }
+      return true
+    }
+
+    let result = 'no data available'
+    const ransomNote = 'a',
+      magazine = 'b'
+    result = canConstruct(ransomNote, magazine)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>

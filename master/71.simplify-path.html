@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>71.simplify-path</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>71.simplify-path</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {string} path
+     * @return {string}
+     */
+    var simplifyPath = function (path) {
+      const names = path.split('/').filter(item => item !== '')
+      const stack = []
+      names.forEach(name => {
+        if (name === '..') {
+          if (stack.length) stack.pop()
+        } else if (name !== '.')
+          stack.push(name)
+      })
+      return '/' + stack.join('/')
+    }
+    let result = 'no data available'
+    const path = "/a/./b/../../c/"
+    // const path = '/home//foo/'
+    result = simplifyPath(path)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>700.search-in-a-binary-search-tree</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>700.search-in-a-binary-search-tree</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * Definition for a binary tree node.
+     * function TreeNode(val, left, right) {
+     *     this.val = (val===undefined ? 0 : val)
+     *     this.left = (left===undefined ? null : left)
+     *     this.right = (right===undefined ? null : right)
+     * }
+     */
+    /**
+     * @param {TreeNode} root
+     * @param {number} val
+     * @return {TreeNode}
+     */
+    const searchBST = function (root, val) {
+      // 1.recursion
+      if (!root || val === root.val) return root
+      return val < root.val ? searchBST(root.left, val) : searchBST(root.right, val)
+
+      // 2.iteration
+      // while (root) {
+      //   if (val === root.val) return root
+      //   root = val < root.val ? root.left : root.right
+      // }
+      // return null
+    }
+    let result = 'no data available'
+
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>

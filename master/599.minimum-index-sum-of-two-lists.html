@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>599.minimum-index-sum-of-two-lists</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>599.minimum-index-sum-of-two-lists</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {string[]} list1
+     * @param {string[]} list2
+     * @return {string[]}
+     */
+    var findRestaurant = function (list1, list2) {
+      let map = new Map
+      for (let i = 0; i < list1.length; ++i) {
+        map.set(list1[i], i)
+      }
+      let indexSum = Number.MAX_VALUE
+      let res = []
+      for (let i = 0; i < list2.length; ++i) {
+        if (i > indexSum) break // current index is greater than the indexSum
+        if (map.has(list2[i])) {
+          const foundIndex = map.get(list2[i])
+          if (i + foundIndex < indexSum) {
+            indexSum = i + foundIndex
+            res = []
+            res.push(list2[i])
+          } else if (i + foundIndex === indexSum) {
+            res.push(list2[i])
+          }
+        }
+      }
+      return res
+    }
+
+    let result = 'no data available'
+    const list1 = ["Shogun", "Tapioca Express", "Burger King", "KFC"], list2 = ["Piatti", "The Grill at Torrey Pines", "Hungry Hunter Steakhouse", "Shogun"]
+    result = findRestaurant(list1, list2)
+
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>

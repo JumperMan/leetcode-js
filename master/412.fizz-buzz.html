@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>412.fizz-buzz</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>412.fizz-buzz</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {number} n
+     * @return {string[]}
+     */
+    var fizzBuzz = function (n) {
+      const list = []
+      for (let i = 1; i <= n; i++) {
+        if (!(i % 15)) {
+          list.push('FizzBuzz')
+        } else if (!(i % 3)) {
+          list.push('Fizz')
+        } else if (!(i % 5)) {
+          list.push('Buzz')
+        } else {
+          list.push(i.toString())
+        }
+      }
+      return list
+    }
+    let result = 'no data available'
+    const n = 15
+    result = fizzBuzz(n)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>

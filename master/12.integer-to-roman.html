@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12.integer-to-roman</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>12.integer-to-roman</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+ * @param {number} num
+ * @return {string}
+ */
+    var floor = function (num, multiple) {
+      return Math.floor(num / multiple)
+    }
+    var intToRoman = function (num) {
+      let M = ["", "M", "MM", "MMM"] // 1000，2000，3000
+      let C = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"] // 100~900
+      let X = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"] // 10~90
+      let I = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"] // 1~9
+      return M[floor(num, 1000)] + C[floor(num % 1000, 100)] + X[floor(num % 100, 10)] + I[num % 10]
+    };
+    let result = 'no data available'
+    result = intToRoman(1994)
+    document.querySelector('#result').innerHTML = 'result is:' + result
+  </script>
+</body>
+
+</html>

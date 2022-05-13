@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1672.richest-customer-wealth</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>1672.richest-customer-wealth</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {number[][]} accounts
+     * @return {number}
+     */
+    var maximumWealth = function (accounts) {
+      const wealth = accounts.map(account => account.reduce((acc, cur) => acc + cur, 0))
+      return Math.max(...wealth)
+    }
+
+
+    let result = 'no data available'
+    const accounts = [[1, 2, 3], [3, 2, 1], [4, 5, 6]]
+    result = maximumWealth(accounts)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
