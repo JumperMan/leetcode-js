@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>367.valid-perfect-square</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>367.valid-perfect-square</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {number} num
+     * @return {boolean}
+     */
+    var isPerfectSquare = function (num) {
+      // 1.brute-force
+      // let x = 1, square = 1
+      // while (square <= num) {
+      //   if (square === num) return true
+      //   ++x
+      //   square = x * x
+      // }
+      // return false
+
+      // 2.binary search
+      let left = 0, right = num
+      while (left <= right) {
+        let mid = left + Math.floor((right - left) / 2)
+        // let square = mid * mid
+        if (mid * mid < num) {
+          left = mid + 1
+        } else if (mid * mid > num) {
+          right = mid - 1
+        } else {
+          return true
+        }
+      }
+      return false
+
+      // 3.Newton's method
+      // let x0 = num
+      // while (true) {
+      //   const x1 = Math.floor((x0 + num / x0) / 2)
+      //   if (x0 - x1 < 1e-6) {
+      //     break
+      //   }
+      //   x0 = x1
+      // }
+      // x = x0
+      // return x * x === num
+    }
+    let result = 'no data available'
+    const num = 144
+    result = isPerfectSquare(num)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1154.day-of-the-year</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>1154.day-of-the-year</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    const dayOfYear = function (date) {
+      const year = +date.slice(0, 4)
+      const month = +date.slice(5, 7)
+      const day = +date.slice(8)
+      const amount = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+      if (year % 400 === 0 || year % 4 === 0 && year % 100 !== 0) { // if the year is a leap year
+        ++amount[1]
+      }
+      let ans = 0
+      for (let i = 0; i < month - 1; ++i) {
+        ans += amount[i]
+      }
+      return ans + day
+    }
+
+    let result = 'no data available'
+    const date = "2004-03-01"
+    result = dayOfYear(date)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>

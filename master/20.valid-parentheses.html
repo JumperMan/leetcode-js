@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>20.valid-parenthesesblank</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>20.valid-parentheses</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {string} s
+     * @return {boolean}
+     */
+
+    // 1.use the stack and isMatch()
+    // var isValid = function (s) {
+    //   if (s.length === 0) return true
+    //   const validateStack = []
+    //   for (let i = 0; i < s.length; i++) {
+    //     const CHAR = s.charAt(i)
+    //     if (CHAR === ')' || CHAR === ']' || CHAR === '}') {
+    //       if (validateStack.length === 0 || !isMatch(validateStack.pop(), CHAR)) return false
+    //     } else {
+    //       validateStack.push(CHAR)
+    //     }
+    //   }
+    //   return validateStack.length === 0
+    // }
+    // const isMatch = function (left, right) {
+    //   switch (right) {
+    //     case ')':
+    //       return left === '('
+    //       break
+    //     case ']':
+    //       return left === '['
+    //       break
+    //     case '}':
+    //       return left === '{'
+    //       break
+    //     default:
+    //       return false
+    //   }
+    // }
+
+    // 2.use the stack and Map
+    const isValid = function (s) {
+      const n = s.length
+      if (n % 2) return false
+      const pairs = new Map([
+        [')', '('],
+        [']', '['],
+        ['}', '{']
+      ])
+      const stk = []
+      for (const ch of s) {
+        if (pairs.has(ch)) {
+          if (!stk.length || stk.pop() !== pairs.get(ch)) {
+            return false
+          }
+        } else
+          stk.push(ch)
+      }
+      return !stk.length
+    }
+    let result = 'no data available'
+    result = isValid('{[]}')
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>

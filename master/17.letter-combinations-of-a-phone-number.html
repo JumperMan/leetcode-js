@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>17.letter-combinations-of-a-phone-number</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>17.letter-combinations-of-a-phone-number</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {string} digits
+     * @return {string[]}
+     */
+    // LEARNED by https://leetcode.com/problems/letter-combinations-of-a-phone-number/discuss/1353278/
+    var letterCombinations = function (digits) {
+      const key = {
+        2: ['a', 'b', 'c'],
+        3: ['d', 'e', 'f'],
+        4: ['g', 'h', 'i'],
+        5: ['j', 'k', 'l'],
+        6: ['m', 'n', 'o'],
+        7: ['p', 'q', 'r', 's'],
+        8: ['t', 'u', 'v'],
+        9: ['w', 'x', 'y', 'z']
+      }
+
+      let res = key[digits[0]]?.slice() || []
+
+      for (let i = 1; i < digits.length; i++) {
+        const temp = []
+        for (const j of key[digits[i]]) {
+          temp.push(...res.map(x => x + j))
+        }
+        res = temp
+      }
+
+      return res
+    }
+    let result = 'no data available'
+    result = letterCombinations('23')
+    document.querySelector('#result').innerHTML = 'result is: ' + result
+  </script>
+</body>
+
+</html>

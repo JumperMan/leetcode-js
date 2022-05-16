@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2140.solving-questions-with-brainpower</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>5982.solving-questions-with-brainpower</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {number[][]} questions
+     * @return {number}
+     */
+    var mostPoints = function (questions) {
+      const n = questions.length
+      const dp = new Array(n).fill(0)
+      let max = 0
+
+      for (let i = n - 1; i >= 0; --i) {
+        const [point, brainpower] = questions[i]
+        dp[i] = Math.max(max, point + (dp[i + brainpower + 1] || 0))
+        max = Math.max(max, dp[i])
+      }
+      return max
+    }
+
+    let result = 'no data available'
+    const questions = [[3, 2], [4, 3], [4, 4], [2, 5]]
+    result = mostPoints(questions)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>

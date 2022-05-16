@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2149.rearrange-array-elements-by-sign</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>2149.rearrange-array-elements-by-sign</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    var rearrangeArray = function (nums) {
+      // 1.brute force
+      // let n = nums.length
+      // let res = []
+      // let positiveArr = []
+      // let negativeArr = []
+      // for (let i = 0; i < n; i++) {
+      //   let cur = nums[i]
+      //   if (cur < 0) negativeArr.push(cur)
+      //   else positiveArr.push(cur)
+      // }
+      // for (let i = 0; i < positiveArr.length; ++i) {
+      //   res.push(positiveArr[i])
+      //   res.push(negativeArr[i])
+      // }
+      // return res
+
+      // 2.dual pointers
+      let n = nums.length, even = 0, odd = 1, res = []
+      for (let i = 0; i < n; ++i) {
+        if (nums[i] > 0) {
+          res[even] = nums[i]
+          even += 2
+        } else {
+          res[odd] = nums[i]
+          odd += 2
+        }
+      }
+      return res
+    }
+    let result = 'no data available'
+    // const nums = [3,1,-2,-5,2,-4]
+    const nums = [-1,1]
+    result = rearrangeArray(nums)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>

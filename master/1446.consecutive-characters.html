@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1446.consecutive-characters</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>1446.consecutive-characters</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {string} s
+     * @return {number}
+     */
+    const maxPower = function (s) {
+      let answer = 1,
+        current = 1
+      for (let i = 1; i < s.length; ++i) {
+        if (s[i - 1] === s[i]) {
+          ++current
+          answer = Math.max(answer, current)
+        } else
+          current = 1
+      }
+      return answer
+    }
+    let result = 'no data available'
+    const s = 'leetcode'
+    result = maxPower(s)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>

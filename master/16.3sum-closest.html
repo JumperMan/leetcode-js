@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>16.3sum-closest</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>16.3sum-closest</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {number[]} nums
+     * @param {number} target
+     * @return {number}
+     */
+    var threeSumClosest = function (nums, target) {
+      const LEN = nums.length
+      // sort
+      nums.sort((a, b) => a - b)
+      let res = nums[0] + nums[1] + nums[LEN - 1]
+      if (res === target || LEN === 3) return res
+      for (let i = 0; i < LEN; i++) {
+        let L = i + 1
+        let R = LEN - 1
+        while (L < R) {
+          let current = nums[i] + nums[L] + nums[R]
+          if (current === target) return current
+          if (mathAbs(current - target) < mathAbs(res - target)) {
+            res = current
+          }
+          if (current > target) {
+            R--
+          } else L++
+        }
+      }
+      return res
+    };
+    var mathAbs = function (num) {
+      return Math.abs(num)
+    }
+    let result = 'no data available'
+    const nums = [-1, 2, 1, -4], target = 1
+    // const nums = [-3, 0, 1, 2], target = 1
+    result = threeSumClosest(nums, target)
+
+    document.querySelector('#result').innerHTML = 'result is: ' + result
+  </script>
+</body>
+
+</html>

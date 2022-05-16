@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.two-sum</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>1.two-sum</h2>
+
+  </div>
+  <div id='result'></div>
+  
+  <script>
+  /**
+   * @param {number[]} nums
+   * @param {number} target
+   * @return {number[]}
+   */
+  const twoSum = function (nums, target) {
+    const map = new Map()
+    for (let i = 0; i <= nums.length; i++) {
+      map.set(nums[i], i)
+    }
+    for (let j = 0; j <= nums.length; j++) {
+      const complement = target - nums[j]
+      if (map.has(complement) && j !== map.get(complement)) {
+        return [j, map.get(complement)]
+      }
+    }
+  }
+  const nums = [2, 7, 11, 15]
+  const target = 9
+  let result = 'no data available'
+  result = twoSum(nums, target)
+  document.querySelector('#result').innerHTML = 'result is:' + result
+  </script>
+</body>
+
+</html>

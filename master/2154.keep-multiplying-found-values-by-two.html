@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2154.keep-multiplying-found-values-by-two</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>2154.keep-multiplying-found-values-by-two</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {number[]} nums
+     * @param {number} original
+     * @return {number}
+     */
+    var findFinalValue = function (nums, original) {
+      nums = nums.sort((prev, next) => prev - next)
+      for (let i = 0; i < nums.length; ++i) {
+        if (nums[i] === original) original *= 2
+      }
+      return original
+    }
+    let result = 'no data available'
+    // const nums = [5, 3, 6, 1, 12], original = 3s
+    // const nums = [2,7,9], original = 4
+    const nums = [8, 4, 2], original = 2
+    result = findFinalValue(nums, original)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>

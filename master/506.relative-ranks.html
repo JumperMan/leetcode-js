@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>506.relative-ranks</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>506.relative-ranks</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {number[]} score
+     * @return {string[]}
+     */
+    const findRelativeRanks = function (score) {
+      const n = score.length
+      const medals = ['Gold Medal', 'Silver Medal', 'Bronze Medal']
+      // two dimensional array
+      const arr = new Array(n).fill(0).map(() => new Array(2).fill(0))
+      for (let i = 0; i < n; ++i) {
+        arr[i] = [score[i], i]
+      }
+      arr.sort((a, b) => b[0] - a[0])
+      const answer = new Array(n).fill(0)
+      for (let i = 0; i < n; ++i) {
+        if (i >= 3) {
+          answer[arr[i][1]] = i + 1 + ''
+        } else {
+          answer[arr[i][1]] = medals[i]
+        }
+      }
+      return answer
+    }
+
+    let result = 'no data available'
+    const score = [10, 3, 8, 9, 4]
+    result = findRelativeRanks(score)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>

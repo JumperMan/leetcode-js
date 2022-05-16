@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>589.n-ary-tree-preorder-traversal</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>589.n-ary-tree-preorder-traversal</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {Node|null} root
+     * @return {number[]}
+     */
+    var preorder = function (root) {
+      const res = []
+      let dump = new Node()
+      dump = root
+      function preorderTree(node, res) {
+        if (!node) return
+        res.push(node.val)
+        for (const ch of node.children) {
+          preorderTree(ch, res)
+        }
+      }
+      preorderTree(dump, res)
+      return res
+    }
+
+    let result = 'no data available'
+
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>

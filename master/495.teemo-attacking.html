@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>495.teemo-attacking</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>495.teemo-attacking</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {number[]} timeSeries
+     * @param {number} duration
+     * @return {number}
+     */
+    const findPoisonedDuration = function (timeSeries, duration) {
+      let damage = 0
+      for (let i = 0; i < timeSeries.length - 1; ++i) {
+        let diff = timeSeries[i + 1] - timeSeries[i]
+        if (diff > duration) {
+          damage += duration
+        } else {
+          damage += diff
+        }
+      }
+      return damage + duration
+    }
+    let result = 'no data available'
+    const timeSeries = [1, 4],
+      duration = 2
+    result = findPoisonedDuration(timeSeries, duration)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>

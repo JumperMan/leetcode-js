@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>9.palindrome-number</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>9.palindrome-number</h2>
+
+  </div>
+  <div id='result'></div>
+
+  <script>
+    /**
+     * @param {number} x
+     * @return {boolean}
+     */
+    var isPalindrome = function (x) {
+      if (x < 0) {
+        // if is nagative number, return false
+        return false
+      } if (x < 10) {
+        // if is less than 10, return true
+        return true
+      } else {
+        // 1.simple way
+        const revereNumber = parseInt(x.toString().split('').reverse().join(''))
+        return revereNumber - x === 0
+        // 2.complicated way
+        //   const string = x.toString()
+        //   const length = string.length
+        //   let isPalindrome = true
+        //   if (length % 2 === 0) {
+        //     for (let i = 0; i < length / 2; i++) {
+        //       if (string.charAt(i) !== string.charAt(length - 1 - i)) {
+        //         isPalindrome = false
+        //         break
+        //       }
+        //     }
+        //     return isPalindrome
+        //   } else {
+        //     for (let i = 0; i < (length - 1) / 2; i++) {
+        //       if (string.charAt(i) !== string.charAt(length - 1 - i)) {
+        //         isPalindrome = false
+        //         break
+        //       }
+        //     }
+        //     return isPalindrome
+        //   }
+      }
+    };
+    const result = isPalindrome(12131)
+    console.log(result, typeof result)
+    document.querySelector('#result').innerHTML = result
+
+  </script>
+</body>
+
+</html>

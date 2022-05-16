@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2169.count-operations-to-obtain-zero</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>2169.count-operations-to-obtain-zero</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {number} num1
+     * @param {number} num2
+     * @return {number}
+     */
+    var countOperations = function (num1, num2) {
+      let res = 0
+      while (num1 && num2) {
+        res += Math.floor(num1 / num2)
+        num1 %= num2; // must need semicolon
+        [num1, num2] = [num2, num1]
+      }
+      return res
+    }
+    let result = 'no data available'
+    const num1 = 2, num2 = 3
+    result = countOperations(num1, num2)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>

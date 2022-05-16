@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>507.perfect-number</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>507.perfect-number</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {number} num
+     * @return {boolean}
+     */
+    var checkPerfectNumber = function (num) {
+      if (num === 1) return false
+      let sum = 1
+      for (let d = 2; d * d <= num; ++d) {
+        if (num % d === 0) {
+          sum += d
+          if (d * d < num) sum += Math.floor(num / d)
+        }
+      }
+      return sum === num
+    }
+
+
+    var fib_n = function (curr, next, n) {
+      if (n == 0) {
+        return curr;
+      } else {
+        return fib_n(next, curr + next, n - 1);
+      }
+    }
+    return fib_n(0, 1, n);
+
+    let result = 'no data available'
+
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>

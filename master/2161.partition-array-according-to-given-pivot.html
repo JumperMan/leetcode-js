@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2161.partition-array-according-to-given-pivot</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>2161.partition-array-according-to-given-pivot</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {number[]} nums
+     * @param {number} pivot
+     * @return {number[]}
+     */
+    var pivotArray = function (nums, pivot) {
+      let resArr = [[], [], []]
+      for (let i of nums) {
+        if (i < pivot) {
+          resArr[0].push(i)
+        } else if (i > pivot) {
+          resArr[2].push(i)
+        } else {
+          resArr[1].push(i)
+        }
+      }
+      return [...resArr[0], ...resArr[1], ...resArr[2]]
+    }
+    let result = 'no data available'
+    // const nums = [9, 12, 5, 10, 14, 3, 10], pivot = 10
+    const nums = [-3,4,3,2], pivot = 2
+    result = pivotArray(nums, pivot)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
