@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url('../css/global.css');
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>462.minimum-move-to-equal-array-elements-ii</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>462.minimum-move-to-equal-array-elements-ii</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    const minMoves2 = function (nums) {
+      nums.sort((a, b) => a - b)
+      let n = nums.length, ans = 0, x = nums[Math.floor(n / 2)]
+      for (let i = 0; i < n; ++i) {
+        ans += Math.abs(nums[i] - x)
+      }
+      return ans
+    }
+
+    let result = 'no data available'
+    const nums = [1, 2, 3]
+    result = minMoves2(nums)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
