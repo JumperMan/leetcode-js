@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>467.unique-substrings-in-wraparound-string</title>
+</head>
+<script src='../js/lodash.min.js'></script>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>467.unique-substrings-in-wraparound-string</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {string} p
+     * @return {number}
+     */
+    var findSubstringInWraproundString = function (p) {
+      const dp = new Array(26).fill(0)
+      let k = 0
+      for (let i = 0; i < p.length; ++i) {
+        if (i > 0 && (p[i].charCodeAt() - p[i - 1].charCodeAt() + 26) % 26 === 1) {
+          console.log(p[i], p[i].charCodeAt(), p[i - 1], p[i - 1].charCodeAt(), p[i].charCodeAt() - p[i - 1].charCodeAt() + 26)
+          ++k
+        } else {
+          k = 1
+        }
+        dp[p[i].charCodeAt() - 'a'.charCodeAt()] = Math.max(dp[p[i].charCodeAt() - 'a'.charCodeAt()], k)
+      }
+      return dp.reduce((a, b) => a + b)
+    }
+
+    let result = 'no data available'
+    // const p = 'a' // 1
+    // const p = 'cac' // 2
+    const p = 'zab' // 6
+    result = findSubstringInWraproundString(p)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
