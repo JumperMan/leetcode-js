@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>17.11.find-closest-lcci</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>17.11.find-closest-lcci</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+    /**
+     * @param {string[]} words
+     * @param {string} word1
+     * @param {string} word2
+     * @return {number}
+     */
+    var findClosest = function (words, word1, word2) {
+      const length = words.length
+      let ans = length
+      let index1 = -1, index2 = -1
+      for (let i = 0; i < length; ++i) {
+        const word = words[i]
+        if (word === word1) index1 = i
+        else if (word === word2) index2 = i
+        if (word1 >= 0 && word2 >= 0) {
+          ans = Math.min(ans, Math.abs(index1 - index2))
+        }
+      }
+      return ans
+    }
+
+    const findMin = findClosest
+    let result = 'no data available'
+    const words = ["I", "am", "a", "student", "from", "a", "university", "in", "a", "city"], word1 = "a", word2 = "student"
+    result = findClosest(word, word1, word2)
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
