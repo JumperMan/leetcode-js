@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    @import url(../css/global.css);
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>729.my-calendar-i</title>
+</head>
+
+<body>
+  <div id='leetcode-box'>
+    <h2>729.my-calendar-i</h2>
+  </div>
+  <div id='result'></div>
+  <script>
+
+    var MyCalendar = function () {
+      this.booker = []
+    }
+
+    /** 
+     * @param {number} start 
+     * @param {number} end
+     * @return {boolean}
+     */
+    MyCalendar.prototype.book = function (start, end) {
+      for (const arr of this.booked) {
+        let l = arr[0], r = arr[1]
+        if (l < end && start < r) {
+          return false
+        }
+      }
+      this.booked.push([start, end])
+      return true
+    }
+
+    /**
+     * Your MyCalendar object will be instantiated and called as such:
+     * var obj = new MyCalendar()
+     * var param_1 = obj.book(start,end)
+     */
+    let result = 'no data available'
+    const book = ["MyCalendar", "book", "book", "book"] // input1
+    const time = [[], [10, 20], [15, 25], [20, 30]] // input2
+    result = [null, true, false, true] // output
+    document.querySelector('#result').innerHTML = 'result is: ' + JSON.stringify(result)
+  </script>
+</body>
+
+</html>
